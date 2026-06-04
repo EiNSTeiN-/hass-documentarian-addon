@@ -1,0 +1,79 @@
+name: Documentarian
+version: 0.1.0
+slug: documentarian
+description: Documentation assistant for appliance and machine manuals.
+url: https://github.com/EiNSTeiN-/hass-documentarian-addon
+arch:
+  - amd64
+  - aarch64
+startup: application
+boot: auto
+init: false
+ingress: true
+ingress_port: 8099
+panel_title: Documentarian
+panel_icon: mdi:file-document-multiple-outline
+panel_admin: false
+stage: experimental
+watchdog: http://[HOST]:[PORT:8099]/api/health
+backup: cold
+options:
+  openai_api_key: ""
+  openai_model: gpt-5.4
+  openai_model_options: gpt-5.5,gpt-5.4,gpt-5.4-mini,o4-mini,o3
+  openai_reasoning_effort: high
+  openai_chat_reasoning_efforts: none,minimal,low,medium,high,xhigh
+  openai_methodology_reasoning_efforts: minimal,low,medium,high,xhigh
+  openai_methodology_reasoning_effort: medium
+  openai_subagent_reasoning_efforts: low,medium,high
+  openai_subagent_reasoning_effort: high
+  openai_default_context_window_tokens: 400000
+  openai_compaction_threshold_ratio: 0.8
+  openai_prompt_cache_key_enabled: true
+  openai_prompt_cache_retention: ""
+  openai_text_verbosity: medium
+  openai_tool_search_enabled: true
+  openai_source_discovery_enabled: true
+  openai_source_discovery_model: gpt-5.4-mini
+  openai_link_discovery_enabled: true
+  openai_link_discovery_model: gpt-5.4-mini
+  openai_live_url_inspection_enabled: true
+  openai_live_url_inspection_model: gpt-5.4-mini
+  openai_live_url_inspection_reasoning_effort: low
+  openai_live_url_inspection_timeout_seconds: 30
+  conversation_title_model: gpt-5.4-mini
+  conversation_title_reasoning_effort: low
+  conversation_title_max_output_tokens: 1024
+  max_attachment_bytes: 150000000
+  log_level: info
+schema:
+  openai_api_key: password
+  openai_model: str
+  openai_model_options: str
+  openai_reasoning_effort: list(none|minimal|low|medium|high|xhigh)
+  openai_chat_reasoning_efforts: str
+  openai_methodology_reasoning_efforts: str
+  openai_methodology_reasoning_effort: list(minimal|low|medium|high|xhigh)
+  openai_subagent_reasoning_efforts: str
+  openai_subagent_reasoning_effort: list(low|medium|high)
+  openai_default_context_window_tokens: int(1,)
+  openai_compaction_threshold_ratio: float
+  openai_prompt_cache_key_enabled: bool
+  openai_prompt_cache_retention: list(|in_memory|24h)
+  openai_text_verbosity: list(low|medium|high)
+  openai_tool_search_enabled: bool
+  openai_source_discovery_enabled: bool
+  openai_source_discovery_model: str
+  openai_link_discovery_enabled: bool
+  openai_link_discovery_model: str
+  openai_live_url_inspection_enabled: bool
+  openai_live_url_inspection_model: str
+  openai_live_url_inspection_reasoning_effort: list(low|medium|high)
+  openai_live_url_inspection_timeout_seconds: float
+  conversation_title_model: str
+  conversation_title_reasoning_effort: list(low|medium|high)
+  conversation_title_max_output_tokens: int(1,)
+  max_attachment_bytes: int(1,)
+  log_level: list(debug|info|warning|error)
+
+image: "ghcr.io/foulab/hass-documentarian-addon"

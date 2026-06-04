@@ -1,0 +1,13 @@
+configuration:
+  openai_api_key:
+    name: OpenAI API key
+    description: API key used by Documentarian agent and ingestion workflows.
+  openai_model:
+    name: Default model
+    description: Default OpenAI model for main agent turns.
+  log_level:
+    name: Log level
+    description: Application log verbosity.
+network:
+  8099/tcp: Documentarian ingress web interface
+

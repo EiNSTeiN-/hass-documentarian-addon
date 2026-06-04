@@ -1,0 +1,6 @@
+{
+  "addon_slug": "documentarian",
+  "managed_by": "chat-documentarian",
+  "repository": "hass-documentarian-addon",
+  "source_tree": "hass-addon"
+}
