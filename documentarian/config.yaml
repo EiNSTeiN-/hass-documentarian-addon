@@ -76,4 +76,4 @@ schema:
   max_attachment_bytes: int(1,)
   log_level: list(debug|info|warning|error)
 
-image: "ghcr.io/foulab/hass-documentarian-addon"
+image: "ghcr.io/einstein-docker/hass-documentarian-addon"
