@@ -1,5 +1,6 @@
+#include <tunables/global>
+
 profile documentarian flags=(attach_disconnected,mediate_deleted) {
-  #include <tunables/global>
   #include <abstractions/base>
   #include <abstractions/nameservice>
 
