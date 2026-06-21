@@ -30,3 +30,9 @@ attachments, generated packages, logs, or credentials.
 
 The add-on exposes the Documentarian UI through Home Assistant ingress. It does
 not expose a host port by default.
+
+## Credits
+
+Add-on icon derived from the
+[Document icon](https://www.flaticon.com/free-icon/document_8964905) by
+Talha Dogar on Flaticon.

@@ -16,3 +16,9 @@ The add-on stores all durable state under `/data/documentarian/` so Home
 Assistant backups can include documentation sets, indexes, conversations,
 attachments, package templates, generated packages, saved links, facts, and
 logs.
+
+## Credits
+
+Add-on icon derived from the
+[Document icon](https://www.flaticon.com/free-icon/document_8964905) by
+Talha Dogar on Flaticon.
