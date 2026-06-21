@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.10
+
+- Run archive imports as background jobs so large restores can progress through
+  Home Assistant ingress without a long synchronous HTTP request timing out.
+- Add import duplicate handling choices for skipping existing resources or
+  replacing them by id, with progress and per-item failure reporting.
+- Recover running import status after modal reopen or page refresh and keep
+  successful durable imports from being marked failed when realtime
+  notifications are unavailable.
+
 ## 0.2.9
 
 - Remove deferred loading from the native Home Assistant MCP Responses tool so
