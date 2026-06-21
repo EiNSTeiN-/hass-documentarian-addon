@@ -10,9 +10,9 @@ configuration:
     description: Application log verbosity.
   home_assistant_mcp_url:
     name: Home Assistant MCP URL
-    description: Optional explicit OpenAI-reachable HTTPS MCP URL override.
+    description: Optional explicit backend-reachable Home Assistant MCP URL override.
   home_assistant_mcp_auto_detect:
     name: Auto-detect Home Assistant MCP
-    description: Probe Supervisor for the ha-mcp add-on and show a confirmation prompt that can auto-configure the remote MCP URL.
+    description: Probe Supervisor for the ha-mcp add-on and show a confirmation prompt that can auto-configure the internal MCP URL.
 network:
   8099/tcp: Documentarian ingress web interface

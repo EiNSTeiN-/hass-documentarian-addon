@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.2.11
+
+- Replace the native remote Home Assistant MCP connector with backend-local MCP
+  access that exposes selected Home Assistant tools as ordinary Documentarian
+  function tools.
+- Add Home Assistant MCP tool exposure controls for exposing all discovered
+  tools or selecting exact tool names.
+- Show Home Assistant MCP backend diagnostics and structured tool-list errors
+  in the settings modal.
+- Treat saved Webhook Proxy MCP URLs as stale and re-discover the internal
+  `ha-mcp` server URL from Supervisor after confirmation.
+
 ## 0.2.10
 
 - Run archive imports as background jobs so large restores can progress through

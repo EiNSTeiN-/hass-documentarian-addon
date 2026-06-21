@@ -6,19 +6,21 @@ Set `openai_api_key` in the add-on configuration before starting the add-on.
 Model, reasoning, search, discovery, attachment, and logging options are also
 configurable from the Home Assistant add-on UI.
 
-The optional Home Assistant MCP integration uses the OpenAI Responses API
-native MCP tool. Set `home_assistant_mcp_url` to an OpenAI-reachable HTTPS MCP
-URL when you want to provide an explicit override. Treat this URL as a secret
-because it can contain a private random path segment.
+The optional Home Assistant MCP integration connects from the Documentarian
+backend to the Home Assistant MCP server and exposes selected MCP tools to the
+main agent as ordinary Documentarian function tools. Set
+`home_assistant_mcp_url` to a backend-reachable Home Assistant MCP URL when you
+want to provide an explicit override. Internal add-on URLs and LAN URLs are
+valid. Treat this URL as a secret because it can contain a private random path
+segment.
 
 When `home_assistant_mcp_url` is empty and `home_assistant_mcp_auto_detect` is
 enabled, Documentarian probes Supervisor only to detect whether the `ha-mcp`
 add-on appears installed. If it is present, the UI shows a confirmation prompt.
-When you confirm, Documentarian reads the `ha-mcp` add-on configuration, combines
-its private path with the current Home Assistant external URL, validates the
-result as an OpenAI-reachable HTTPS MCP URL, and saves it for future agent
-turns. Documentarian does not save Home Assistant's internal add-on DNS URL
-because OpenAI cannot connect to private Home Assistant network addresses.
+When you confirm, Documentarian reads the `ha-mcp` add-on configuration,
+resolves the internal MCP URL, lists the available tools through the backend MCP
+client, and saves the internal URL for future agent turns. OpenAI does not
+receive the URL and does not connect to Home Assistant directly.
 
 ## Data
 
