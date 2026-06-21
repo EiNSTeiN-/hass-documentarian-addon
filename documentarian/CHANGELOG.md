@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.6
+
+- Upload import archives in browser-sized chunks so large exports can be
+  previewed and restored through Home Assistant ingress and proxied add-on
+  access.
+
 ## 0.2.5
 
 - Fix Home Assistant MCP Confirm when Supervisor rejects direct reads of the
