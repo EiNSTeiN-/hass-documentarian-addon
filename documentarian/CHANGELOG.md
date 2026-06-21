@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.0
+
+- Add optional Home Assistant MCP connection settings and autodetection support.
+- Expose Home Assistant MCP to the main Documentarian agent as a native
+  Responses API MCP tool when an OpenAI-reachable URL is configured.
+
 ## 0.1.3
 
 - Allow Socket.IO to complete connections through Home Assistant ingress origins.
