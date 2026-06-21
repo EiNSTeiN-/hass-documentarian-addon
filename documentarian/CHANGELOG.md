@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.7
+
+- Require Home Assistant MCP auto-configuration to use the Nabu Casa / Webhook
+  Proxy for HA MCP `/api/webhook/mcp_...` endpoint instead of falling back to a
+  direct MCP add-on secret path.
+- Retry conversations without the optional Home Assistant MCP tool when OpenAI
+  cannot retrieve the remote MCP tool list, so the agent can explain the
+  connector issue instead of ending with an error-only turn.
+
 ## 0.2.6
 
 - Upload import archives in browser-sized chunks so large exports can be
