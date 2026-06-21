@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.3
+
+- Add a Camera attachment action to all message composers so mobile users can
+  capture appliance tags and other photos directly.
+- Reduce export archive size by omitting transient candidates, viewer caches,
+  generated indexes, lock files, and model upload caches, and use staged
+  browser-native export downloads for large archives.
+
 ## 0.2.2
 
 - Auto-configure Home Assistant MCP from the detected `ha-mcp` add-on after
