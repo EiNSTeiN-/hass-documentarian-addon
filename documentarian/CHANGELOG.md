@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.9
+
+- Remove deferred loading from the native Home Assistant MCP Responses tool so
+  OpenAI can import the remote tool list without requiring tool search.
+- Add a Home Assistant MCP Test action that makes a real Responses API request
+  and shows the raw diagnostic transcript, including the MCP URL and API error
+  details.
+
 ## 0.2.8
 
 - Add Home Assistant MCP settings so saved runtime MCP URLs can be refreshed,
