@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.5
+
+- Fix Home Assistant MCP Confirm when Supervisor rejects direct reads of the
+  Webhook Proxy add-on options.
+- Use the documented add-on info endpoint for Home Assistant MCP option
+  discovery and avoid returning ingress-transformable 502 responses for
+  auto-configuration failures.
+
 ## 0.2.4
 
 - Prefer the `ha-mcp` Webhook Proxy add-on when auto-configuring Home
