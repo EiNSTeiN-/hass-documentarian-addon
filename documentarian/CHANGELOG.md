@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.2
+
+- Auto-configure Home Assistant MCP from the detected `ha-mcp` add-on after
+  the user confirms the main UI prompt.
+
 ## 0.2.1
 
 - Fix live Home Assistant MCP tool bubbles so completed calls render as
