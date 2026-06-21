@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.1
+
+- Fix live Home Assistant MCP tool bubbles so completed calls render as
+  completed instead of remaining in the working state.
+
 ## 0.2.0
 
 - Add optional Home Assistant MCP connection settings and autodetection support.
