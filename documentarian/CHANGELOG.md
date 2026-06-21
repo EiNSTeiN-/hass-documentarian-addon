@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.8
+
+- Add Home Assistant MCP settings so saved runtime MCP URLs can be refreshed,
+  forgotten, or re-discovered without editing add-on files.
+- Let imports continue when an archive contains duplicate data members by
+  using the first validated copy and reporting a warning.
+- Avoid writing duplicate child-conversation members into new export archives.
+
 ## 0.2.7
 
 - Require Home Assistant MCP auto-configuration to use the Nabu Casa / Webhook
