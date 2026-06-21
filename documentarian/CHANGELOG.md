@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.4
+
+- Prefer the `ha-mcp` Webhook Proxy add-on when auto-configuring Home
+  Assistant MCP from the main UI Confirm action.
+- Show concise API error messages when Home Assistant ingress returns an HTML
+  error page.
+
 ## 0.2.3
 
 - Add a Camera attachment action to all message composers so mobile users can
