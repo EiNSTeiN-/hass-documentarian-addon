@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.13
+
+- Polish Library loading placeholders so empty and loading states match the
+  saved documentation card layout.
+- Improve Home Assistant MCP settings diagnostics for configured URLs and make
+  the settings modal usable on mobile viewports.
+- Snap compact modals and drawers to the viewport on smaller screens and keep
+  conversation content from overflowing message boundaries.
+
 ## 0.2.12
 
 - Probe Home Assistant MCP internal URL candidates before saving them, using
