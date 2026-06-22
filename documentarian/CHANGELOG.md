@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.12
+
+- Probe Home Assistant MCP internal URL candidates before saving them, using
+  Supervisor IP and hostname metadata before slug-derived fallbacks.
+- Keep failed raw slug candidates diagnostic-only so unresolved add-on DNS names
+  are not persisted as working Home Assistant MCP URLs.
+- Redact Home Assistant MCP probe diagnostics by default while preserving an
+  explicit reveal action for local troubleshooting.
+
 ## 0.2.11
 
 - Replace the native remote Home Assistant MCP connector with backend-local MCP
