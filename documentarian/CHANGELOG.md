@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.14
+
+- Show saved structured package references on package pages, package modals,
+  and conversation reference modals even when package prose does not include
+  inline citation markers.
+- Preserve package reference page locators and highlight text when opening
+  linked source documents from the structured reference list.
+- Tighten package-authoring guidance so generated durable packages prefer
+  useful inline citations while still saving complete structured references.
+
 ## 0.2.13
 
 - Polish Library loading placeholders so empty and loading states match the
