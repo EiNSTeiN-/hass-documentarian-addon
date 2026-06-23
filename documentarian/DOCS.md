@@ -33,6 +33,40 @@ attachments, generated packages, logs, or credentials.
 The add-on exposes the Documentarian UI through Home Assistant ingress. It does
 not expose a host port by default.
 
+## Workbench MCP webhook proxy
+
+Documentarian includes an optional webhook proxy for its own workbench MCP
+server. This is separate from the Home Assistant MCP integration described
+above. It makes Documentarian's workbench MCP tools reachable through Home
+Assistant at a URL shaped like:
+
+```text
+https://<home-assistant-origin>/api/webhook/mcp_<secret>
+```
+
+The proxy is disabled by default. To enable it:
+
+1. Set `workbench_mcp_proxy_enabled` to `true`.
+2. Set `workbench_mcp_proxy_remote_url` to your Home Assistant public origin,
+   such as `https://home.example.com`, or leave it blank to let Documentarian
+   try the enabled Nabu Casa remote URL.
+3. Restart the add-on.
+4. Copy the generated URL from the add-on logs, or combine your Home Assistant
+   public origin with the logged `/api/webhook/mcp_...` path.
+
+Treat the generated webhook URL like a password. The random webhook id protects
+the public endpoint, and Documentarian also protects the internal add-on hop
+with a private token that is generated under
+`/data/documentarian/workbench_mcp_proxy/` and mirrored into Home Assistant's
+generated proxy config. Neither token should be shared in screenshots,
+diagnostics, or issue reports.
+
+To disable the proxy, set `workbench_mcp_proxy_enabled` to `false` and restart
+the add-on. Documentarian stops exporting the internal backend token so the
+proxy fails closed even if Home Assistant cannot reload the integration. To
+rotate the URL, set `workbench_mcp_proxy_regenerate_webhook` to `true` for one
+restart, copy the new URL from the logs, then set that option back to `false`.
+
 ## Credits
 
 Add-on icon derived from the

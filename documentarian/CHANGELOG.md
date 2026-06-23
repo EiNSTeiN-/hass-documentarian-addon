@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.2.15
+
+- Add an optional disabled-by-default workbench MCP webhook proxy that exposes
+  Documentarian's own MCP tools through a generated Home Assistant
+  `/api/webhook/mcp_...` URL.
+- Install and reload a bundled Home Assistant custom integration that forwards
+  webhook traffic to the Documentarian backend MCP endpoint after a health
+  check.
+- Protect the internal add-on hop with a generated backend token and document
+  webhook rotation through the add-on options.
+
 ## 0.2.14
 
 - Show saved structured package references on package pages, package modals,

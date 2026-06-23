@@ -14,5 +14,17 @@ configuration:
   home_assistant_mcp_auto_detect:
     name: Auto-detect Home Assistant MCP
     description: Probe Supervisor for the ha-mcp add-on and show a confirmation prompt that can auto-configure the internal MCP URL.
+  workbench_mcp_proxy_enabled:
+    name: Enable workbench MCP webhook proxy
+    description: Publish Documentarian workbench MCP tools through a generated Home Assistant webhook URL. Disabled by default; treat the generated URL like a password.
+  workbench_mcp_proxy_remote_url:
+    name: Home Assistant public URL for workbench MCP proxy
+    description: Optional Home Assistant public origin, such as https://home.example.com. When blank, Documentarian tries to use the enabled Nabu Casa remote URL.
+  workbench_mcp_proxy_debug_logging:
+    name: Workbench MCP proxy debug logging
+    description: Log webhook proxy setup and request diagnostics without printing the internal backend token.
+  workbench_mcp_proxy_regenerate_webhook:
+    name: Regenerate workbench MCP webhook
+    description: Rotate the generated webhook id and internal backend token on the next add-on start. Turn this back off after rotation.
 network:
   8099/tcp: Documentarian ingress web interface

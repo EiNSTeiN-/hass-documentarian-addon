@@ -18,6 +18,16 @@ Assistant backups can include documentation sets, indexes, conversations,
 attachments, package templates, generated packages, saved links, facts, and
 logs.
 
+Documentarian can also expose its own workbench MCP tools through Home
+Assistant's public webhook mechanism. This is disabled by default. When
+`workbench_mcp_proxy_enabled` is enabled and the add-on restarts, Documentarian
+installs a small Home Assistant custom integration, registers a generated
+`/api/webhook/mcp_...` URL, and forwards that webhook to the add-on's internal
+`/mcp` endpoint using a private internal header. The generated webhook URL is a
+bearer secret; anyone with the full URL can reach the workbench MCP tools.
+Use `workbench_mcp_proxy_regenerate_webhook` for one restart to rotate the URL
+and then turn the option back off.
+
 ## Credits
 
 Add-on icon derived from the
