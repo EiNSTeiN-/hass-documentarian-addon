@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.18
+
+- Keep Documentarian running when the optional workbench MCP webhook proxy
+  cannot register with Home Assistant Core immediately.
+- Retry Home Assistant config-entry registration in the background so transient
+  Core API 502s or first-install Core restarts do not force add-on restart
+  loops.
+
 ## 0.2.17
 
 - Confirm browser live-camera capture works in the actual Home Assistant mobile
