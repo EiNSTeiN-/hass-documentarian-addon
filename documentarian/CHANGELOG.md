@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.17
+
+- Confirm browser live-camera capture works in the actual Home Assistant mobile
+  app and can send captured photo attachments to an agent.
+- Reduce snapshot encoding work for large camera frames while preserving
+  enough resolution for appliance labels and tags.
+
 ## 0.2.16
 
 - Replace the mobile `Take photo` attachment action with a browser camera
