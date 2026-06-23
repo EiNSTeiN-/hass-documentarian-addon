@@ -1,5 +1,5 @@
 name: Documentarian
-version: 0.2.19
+version: 0.2.20
 slug: documentarian
 description: Documentation assistant for appliance and machine manuals.
 url: https://github.com/EiNSTeiN-/hass-documentarian-addon
@@ -20,7 +20,7 @@ panel_title: Documentarian
 panel_icon: mdi:file-document-multiple-outline
 panel_admin: false
 stage: experimental
-watchdog: http://[HOST]:[PORT:8099]/api/health
+watchdog: http://[HOST]:[PORT:8099]/addon-health
 backup: cold
 options:
   openai_api_key: ""

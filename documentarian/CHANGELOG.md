@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.2.20
+
+- Add an nginx front door for the add-on so Home Assistant can show the
+  Documentarian frontend and `/addon-health` before the backend finishes
+  startup.
+- Move slow backend startup maintenance into background work so `/api/health`
+  becomes available promptly.
+- Preserve Home Assistant ingress restrictions through the nginx proxy without
+  treating loopback itself as an allowed browser client.
+- Return structured `backend_starting` JSON while the backend is unavailable,
+  and make the frontend retry that state automatically.
+
 ## 0.2.19
 
 - Add startup phase timing logs for the backend and Home Assistant add-on
