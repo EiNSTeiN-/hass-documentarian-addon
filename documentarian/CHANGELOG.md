@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.22
+
+- Make the shared nginx front door re-resolve the backend upstream so local
+  Docker Compose testing recovers when the backend container is recreated while
+  nginx remains running.
+
 ## 0.2.21
 
 - Rewrite the built frontend shell from Home Assistant's `X-Ingress-Path`
