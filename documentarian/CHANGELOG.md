@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.2.19
+
+- Add startup phase timing logs for the backend and Home Assistant add-on
+  bootstrap path while keeping proxy secrets out of logs.
+- Defer optional Home Assistant MCP status and tool-list work so the Library UI
+  and backend health endpoint become available sooner.
+- Cache Home Assistant MCP status/tool-list failures briefly, with explicit
+  refresh and diagnostics paths still forcing live checks.
+- Lazy-start the Documentarian workbench MCP session manager on first `/mcp`
+  use and keep disabled proxy reload failures retryable in the background.
+
 ## 0.2.18
 
 - Keep Documentarian running when the optional workbench MCP webhook proxy

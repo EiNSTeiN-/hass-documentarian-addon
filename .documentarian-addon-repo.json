@@ -1,6 +1,6 @@
 {
   "addon_slug": "documentarian",
   "managed_by": "chat-documentarian",
-  "repository": "EiNSTeiN-/hass-documentarian-addon",
+  "repository": "hass-documentarian-addon",
   "source_tree": "hass-addon"
 }
