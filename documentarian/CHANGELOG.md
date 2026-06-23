@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.24
+
+- Fix the optional workbench MCP webhook proxy so streamable HTTP clients can
+  initialize against the public webhook URL without `/mcp` returning HTTP 405.
+- Generate refreshed proxy configs with the backend `/mcp/` target and print
+  the public webhook URL in add-on logs while keeping the internal proxy token
+  private.
+
 ## 0.2.23
 
 - Constrain the backend-starting notice to the library content width and keep
