@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.16
+
+- Replace the mobile `Take photo` attachment action with a browser camera
+  stream capture modal for Home Assistant add-on feasibility testing.
+- Keep `Camera roll` as a separate image picker fallback when live camera
+  access is unavailable or denied.
+
 ## 0.2.15
 
 - Add an optional disabled-by-default workbench MCP webhook proxy that exposes
