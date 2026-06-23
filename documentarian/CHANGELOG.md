@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.25
+
+- Fix pasted file and image uploads in the Home Assistant add-on by preventing
+  the nginx proxy from redirecting `POST /api/attachments` to a trailing-slash
+  URL.
+
 ## 0.2.24
 
 - Fix the optional workbench MCP webhook proxy so streamable HTTP clients can
