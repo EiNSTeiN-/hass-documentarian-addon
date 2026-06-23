@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.21
+
+- Rewrite the built frontend shell from Home Assistant's `X-Ingress-Path`
+  header so JavaScript, CSS, favicon, API, and Socket.IO requests stay under
+  the add-on panel path.
+- Run the nginx reverse proxy in the default local Docker Compose stack so
+  local testing uses the same front door as the Home Assistant add-on.
+- Add a built-in loading shell that remains visible while the backend becomes
+  available.
+
 ## 0.2.20
 
 - Add an nginx front door for the add-on so Home Assistant can show the
