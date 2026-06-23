@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.23
+
+- Constrain the backend-starting notice to the library content width and keep
+  the stable library surface visible during startup retry polling.
+
 ## 0.2.22
 
 - Make the shared nginx front door re-resolve the backend upstream so local
