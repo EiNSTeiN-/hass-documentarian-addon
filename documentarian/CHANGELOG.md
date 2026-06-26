@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.2.26
+
+- Add PDF image metadata tools so agents can list source-document images by
+  page, coordinates, dimensions, and saved annotations, retrieve individual
+  images, and build up source-image annotations as images are inspected.
+- Render inline source-image citations in agent responses, including standalone
+  visual references, document-viewer image highlighting, and annotation
+  captions for referenced images.
+- Add agent-driven set cover selection from saved files or source-document
+  crops, with visual crop confirmation guidance and unified `set_cover` /
+  `remove_cover` tooling across all cover sources.
+- Expose `sets:list` to the main agent so broad set-maintenance requests can
+  enumerate saved documentation sets directly.
+- Preserve reasoning dependencies across conversation compaction and show
+  compaction events inline in the conversation timeline.
+- Display token usage from Responses API totals and propagate resource updates
+  over realtime events so Library views refresh cover changes across tabs.
+- Improve in-conversation tool bubbles and visual-content prompt guidance so
+  users can understand tool calls without opening raw JSON and agents know to
+  show visual content through inline citations.
+- Keep the local Docker Compose nginx proxy aligned with the checked-in add-on
+  proxy template so drag, paste, and file-picker uploads use the backend
+  `/api/attachments` endpoint without stale trailing-slash redirects.
+
 ## 0.2.25
 
 - Fix pasted file and image uploads in the Home Assistant add-on by preventing
