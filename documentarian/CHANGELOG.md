@@ -1,5 +1,50 @@
 # Changelog
 
+## 0.2.27
+
+- Use durable OpenAI embeddings for semantic search across saved
+  documentation, candidates, knowledge, links, packages, and package templates,
+  with bounded paging and certified index generations.
+- Scale corpus-wide retrieval and information-package materialization with
+  paginated references, bounded query budgets, explicit scope selection, and
+  atomic package replacement.
+- Make documentation sets, sources, candidates, saved files, packages,
+  templates, conversations, imports, and realtime publications transactional
+  and crash recoverable across concurrent processes.
+- Detect, quarantine, and recover stale or malformed indexes, durable records,
+  PDF text layers, and viewer render caches without publishing partial state.
+- Add configurable admission, memory, disk, upload, archive, and concurrency
+  boundaries that prevent accidental local resource exhaustion while keeping
+  large single-user workflows usable.
+- Ship and validate a fixed SQLite 3.51.3 runtime, explicit runtime-store
+  ownership, stopped-data migration, and cold upgrade/restore contracts for
+  Home Assistant backups.
+- Supervise the backend, nginx, and helper processes with truthful liveness and
+  readiness checks, bounded graceful shutdown, watchdog support, and strict
+  loopback/ingress access boundaries.
+- Add durable optional per-tool Home Assistant approval policies and recovery
+  cards while keeping tools approval-free unless the user selects Ask.
+- Preserve structured multimodal tool outputs, classify weak PDF extraction
+  and OCR need, and return consistent recoverable receipts for visual source
+  failures.
+- Manage OpenAI attachment-file ownership and cache validation so expired,
+  malformed, or imported provider ids are repaired without losing the local
+  attachment.
+- Retry transient frontend reads, realtime snapshots, document assets, and
+  thumbnail generation automatically with bounded backoff, visible countdowns,
+  and persistent manual Retry actions after exhaustion.
+- Load all Library and documentation covers on the first navigation, lazy-load
+  large frontend features safely, and add polished responsive pages for every
+  saved resource type.
+- Add a production-backed component catalog with desktop/mobile viewport
+  controls, executable loading and recovery states, accessibility auditing, and
+  bundle-size enforcement.
+- Bound the application diagnostic log with rotation and keep it in temporary
+  storage so Home Assistant backups contain durable application data rather
+  than transient logs.
+- Add correlated operational metrics, logs, and traces with finite local
+  retention and isolated diagnostic proofs.
+
 ## 0.2.26
 
 - Add PDF image metadata tools so agents can list source-document images by
@@ -23,7 +68,6 @@
 - Keep the local Docker Compose nginx proxy aligned with the checked-in add-on
   proxy template so drag, paste, and file-picker uploads use the backend
   `/api/attachments` endpoint without stale trailing-slash redirects.
-
 ## 0.2.25
 
 - Fix pasted file and image uploads in the Home Assistant add-on by preventing

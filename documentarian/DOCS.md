@@ -6,6 +6,32 @@ Set `openai_api_key` in the add-on configuration before starting the add-on.
 Model, reasoning, search, discovery, attachment, and logging options are also
 configurable from the Home Assistant add-on UI.
 
+Resource and archive options control local admission and failure boundaries.
+`durable_json_max_bytes` may be left unset to derive the reviewed whole-record
+JSON boundary from available memory. `durable_record_decode_concurrency` may be
+left unset to derive concurrency, or set lower to reserve more memory for other
+workloads.
+The defaults account for a 1 GiB heavy-work memory pool, a 512 MiB source
+parse reservation, a fixed 5 MiB attachment-response stream, a 150 MB
+attachment, and a 10 MiB default multipart parser reservation consisting of
+the configured spool and framing limits plus a fixed native allowance. The
+general source-file cap is 150 MiB, while materialized plain text is capped at
+16 MiB and HTML at 1 MiB before allocation. The
+archive defaults admit 2 GiB compressed and 8 GiB extracted. Staging and
+publication can coexist with two target-side copies while the controller
+retains 1 GiB free. Because the add-on places those paths together under
+`/data/documentarian/`, a host intended to exercise every maximum should keep
+about 30 GiB free there, plus space for existing durable data, and about 2 GiB
+of memory headroom for the add-on alongside Home Assistant and other add-ons.
+Lower the input ceilings and matching reservations for smaller hosts.
+
+The backend validates the resource settings as one group. Increasing worker,
+input, manifest, or spool limits can require a corresponding increase in
+record, memory, or disk capacity. Invalid combinations prevent startup rather
+than being clamped. Reservations are local reliability bookkeeping: they do
+not preallocate every configured byte, and raising them permits more local
+resource use, not more privileges.
+
 The optional Home Assistant MCP integration connects from the Documentarian
 backend to the Home Assistant MCP server and exposes selected MCP tools to the
 main agent as ordinary Documentarian function tools. Set
@@ -24,14 +50,48 @@ receive the URL and does not connect to Home Assistant directly.
 
 ## Data
 
-The add-on persists runtime data under `/data/documentarian/`. The source image
-does not contain downloaded manuals, parsed documents, indexes, conversations,
-attachments, generated packages, logs, or credentials.
+The add-on persists runtime data under `/data/documentarian/`. Its bounded
+rotating application log lives under `/tmp/documentarian/logs/`, outside Home
+Assistant backups, while stdout remains available through Supervisor logs. The
+source image does not contain downloaded manuals, parsed documents, indexes,
+conversations, attachments, generated packages, logs, or credentials.
+Private upload, archive, and controller state lives under
+`/data/documentarian/resource_staging/` and participates in Home Assistant
+backup and restart recovery.
+
+<!-- runtime-store-contract: documentarian-runtime-stores-v1 -->
+
+The generated
+[runtime-store inventory](https://github.com/EiNSTeiN-/chat-documentarian/blob/main/docs/runtime-store-inventory.md)
+is the authoritative root, member, backup, and exclusion policy.
 
 ## Access
 
 The add-on exposes the Documentarian UI through Home Assistant ingress. It does
-not expose a host port by default.
+not expose a host port. A normal browser request arrives over the user's
+cloudflared HTTPS tunnel, is authenticated by Home Assistant, and then reaches
+the add-on through authenticated ingress. The backend listens on loopback
+inside the add-on container. Publishing the add-on port directly is
+unsupported.
+
+## Health and automatic recovery
+
+The add-on starts the backend first, verifies backend liveness, and then starts
+the nginx ingress front door. `/addon-health` checks backend process liveness.
+`/addon-ready` checks whether required local stores and runtime dependencies
+can serve work. A recoverable readiness failure withdraws backend-dependent
+traffic without restarting the add-on.
+
+Enable **Watchdog** on this installed add-on's Home Assistant page to have
+Supervisor restart it after a fatal backend or nginx failure. The add-on
+manifest supplies the `/addon-health` monitoring URL, but the per-install
+Watchdog setting controls whether Home Assistant performs automatic recovery.
+The separate start-on-boot setting does not provide runtime failure recovery.
+
+An operator stop or update allows up to 20 seconds for graceful backend,
+nginx, and helper shutdown, escalates remaining processes, and completes the
+internal shutdown sequence within 24 seconds. Home Assistant's outer stop
+deadline is 30 seconds.
 
 ## Workbench MCP webhook proxy
 
@@ -51,21 +111,30 @@ The proxy is disabled by default. To enable it:
    such as `https://home.example.com`, or leave it blank to let Documentarian
    try the enabled Nabu Casa remote URL.
 3. Restart the add-on.
-4. Copy the generated URL from the add-on logs, or combine your Home Assistant
-   public origin with the logged `/api/webhook/mcp_...` path.
+4. Copy the generated URL printed after Home Assistant successfully registers
+   or reloads the integration.
 
 Treat the generated webhook URL like a password. The random webhook id protects
-the public endpoint, and Documentarian also protects the internal add-on hop
-with a private token that is generated under
+the public endpoint. Home Assistant user authentication is not applied to this
+webhook: possession of its unguessable URL grants access. A remote MCP client
+reaches that URL over cloudflared HTTPS. Home Assistant Core then forwards the
+request over private HTTP and Documentarian protects that internal add-on hop
+with a separate token generated under
 `/data/documentarian/workbench_mcp_proxy/` and mirrored into Home Assistant's
 generated proxy config. Neither token should be shared in screenshots,
 diagnostics, or issue reports.
+
+Documentarian records new and rotated credentials as a pending generation and
+reuses it across failed reloads. It prints the full capability URL only after
+backend health and Home Assistant registration succeed. Routine starts and
+failed attempts keep the URL masked.
 
 To disable the proxy, set `workbench_mcp_proxy_enabled` to `false` and restart
 the add-on. Documentarian stops exporting the internal backend token so the
 proxy fails closed even if Home Assistant cannot reload the integration. To
 rotate the URL, set `workbench_mcp_proxy_regenerate_webhook` to `true` for one
-restart, copy the new URL from the logs, then set that option back to `false`.
+successful restart, copy the new URL from the logs, then set that option back
+to `false` so a later false-to-true transition can rotate it again.
 
 ## Credits
 

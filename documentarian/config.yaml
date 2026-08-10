@@ -1,5 +1,5 @@
 name: Documentarian
-version: 0.2.26
+version: 0.2.27
 slug: documentarian
 description: Documentation assistant for appliance and machine manuals.
 url: https://github.com/EiNSTeiN-/hass-documentarian-addon
@@ -8,14 +8,17 @@ arch:
   - aarch64
 startup: application
 boot: auto
-init: false
+init: true
+timeout: 30
 ingress: true
 ingress_port: 8099
 hassio_api: true
 hassio_role: manager
 homeassistant_api: true
 map:
-  - config:rw
+  - type: homeassistant_config
+    read_only: false
+    path: /config
 panel_title: Documentarian
 panel_icon: mdi:file-document-multiple-outline
 panel_admin: false
@@ -32,7 +35,6 @@ options:
   openai_methodology_reasoning_effort: medium
   openai_subagent_reasoning_efforts: low,medium,high
   openai_subagent_reasoning_effort: high
-  openai_default_context_window_tokens: 400000
   openai_compaction_threshold_ratio: 0.8
   openai_prompt_cache_key_enabled: true
   openai_prompt_cache_retention: ""
@@ -56,6 +58,39 @@ options:
   conversation_title_reasoning_effort: low
   conversation_title_max_output_tokens: 1024
   max_attachment_bytes: 150000000
+  max_downloaded_source_bytes: 157286400
+  max_plain_text_source_bytes: 16777216
+  max_html_source_bytes: 1048576
+  max_import_archive_bytes: 2147483648
+  max_import_uncompressed_bytes: 8589934592
+  max_import_manifest_bytes: 16777216
+  max_import_member_bytes: 2147483648
+  max_import_members: 50000
+  max_import_compression_ratio: 100.0
+  max_inbound_transfers: 2
+  max_source_ingestions: 1
+  max_archive_workers: 1
+  max_resource_workers: 2
+  max_import_upload_chunk_bytes: 16777216
+  max_resource_records: 4096
+  max_metadata_catalog_generation_bytes: 268435456
+  max_package_materialization_pairs: 8
+  max_materialized_package_bytes: 524288
+  max_multipart_overhead_bytes: 1048576
+  http_upload_spool_memory_bytes: 1048576
+  max_resource_memory_bytes: 1073741824
+  max_source_ingest_memory_reservation_bytes: 536870912
+  max_archive_metadata_bytes: 67108864
+  max_archive_metadata_multiplier: 4
+  max_import_member_name_bytes: 1024
+  max_manifest_json_depth: 32
+  max_manifest_string_bytes: 8192
+  max_manifest_container_items: 50000
+  min_resource_temp_free_bytes: 1073741824
+  resource_controller_lock_timeout_seconds: 0.25
+  resource_lease_heartbeat_seconds: 10.0
+  resource_lease_expiry_seconds: 60.0
+  resource_shutdown_grace_seconds: 30.0
   log_level: info
 schema:
   openai_api_key: password
@@ -90,6 +125,41 @@ schema:
   conversation_title_model: str
   conversation_title_reasoning_effort: list(low|medium|high)
   conversation_title_max_output_tokens: int(1,)
+  durable_json_max_bytes: int(1,67108864)?
+  durable_record_decode_concurrency: int(1,)?
   max_attachment_bytes: int(1,)
+  max_downloaded_source_bytes: int(1,)
+  max_plain_text_source_bytes: int(1,)
+  max_html_source_bytes: int(1,)
+  max_import_archive_bytes: int(1,)
+  max_import_uncompressed_bytes: int(1,)
+  max_import_manifest_bytes: int(1,)
+  max_import_member_bytes: int(1,)
+  max_import_members: int(1,)
+  max_import_compression_ratio: float
+  max_inbound_transfers: int(1,)
+  max_source_ingestions: int(1,)
+  max_archive_workers: int(1,)
+  max_resource_workers: int(1,)
+  max_import_upload_chunk_bytes: int(1,)
+  max_resource_records: int(1,)
+  max_metadata_catalog_generation_bytes: int(16777216,4294967296)
+  max_package_materialization_pairs: int(1,64)
+  max_materialized_package_bytes: int(65536,33554432)
+  max_multipart_overhead_bytes: int(1,)
+  http_upload_spool_memory_bytes: int(1,)
+  max_resource_memory_bytes: int(1,)
+  max_source_ingest_memory_reservation_bytes: int(1,)
+  max_archive_metadata_bytes: int(1,)
+  max_archive_metadata_multiplier: int(1,)
+  max_import_member_name_bytes: int(1,)
+  max_manifest_json_depth: int(1,)
+  max_manifest_string_bytes: int(1,)
+  max_manifest_container_items: int(1,)
+  min_resource_temp_free_bytes: int(0,)
+  resource_controller_lock_timeout_seconds: float
+  resource_lease_heartbeat_seconds: float
+  resource_lease_expiry_seconds: float
+  resource_shutdown_grace_seconds: float
   log_level: list(debug|info|warning|error)
 image: "ghcr.io/einstein-docker/hass-documentarian-addon"
