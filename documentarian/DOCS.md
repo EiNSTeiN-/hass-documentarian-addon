@@ -80,7 +80,9 @@ The add-on starts the backend first, verifies backend liveness, and then starts
 the nginx ingress front door. `/addon-health` checks backend process liveness.
 `/addon-ready` checks whether required local stores and runtime dependencies
 can serve work. A recoverable readiness failure withdraws backend-dependent
-traffic without restarting the add-on.
+traffic without restarting the add-on. Cold-start data recovery has a bounded
+120-second window to bring the backend endpoint online; nginx then has a
+separate 30-second startup-liveness window.
 
 Enable **Watchdog** on this installed add-on's Home Assistant page to have
 Supervisor restart it after a fatal backend or nginx failure. The add-on

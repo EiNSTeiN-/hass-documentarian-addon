@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.28
+
+- Recover retained legacy source-corpus mutation records during cold upgrades
+  instead of sending them through incompatible realtime-owner recovery.
+- Allow bounded durable cold-start recovery up to 120 seconds while preserving
+  the separate 30-second nginx startup and Home Assistant controlled-stop
+  deadlines.
+
 ## 0.2.27
 
 - Use durable OpenAI embeddings for semantic search across saved
