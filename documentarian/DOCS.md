@@ -78,20 +78,23 @@ unsupported.
 
 The add-on starts the nginx ingress front door before configuration preflight
 and backend recovery. `/addon-health` checks nginx/container-front-door liveness.
-`/addon-ready` checks whether required local stores and runtime dependencies
-can serve work. A recoverable readiness failure withdraws backend-dependent
-traffic without restarting the add-on. `/startup-status` exposes a redacted
+`/addon-ready` confirms that backend startup completed without rerunning deep
+storage and index diagnostics. Until it succeeds, backend-dependent traffic is
+withheld without restarting the add-on. `/startup-status` exposes a redacted
 active recovery phase and elapsed diagnostic duration directly through nginx.
 Cold-start data recovery has no elapsed-time deadline and continues until the
 backend becomes live or reports a real error. The open tab enters the
-workbench automatically when readiness succeeds.
+workbench automatically when startup admission succeeds. Detailed operational
+health remains available from `/api/health` without controlling UI admission.
 
 Enable **Watchdog** on this installed add-on's Home Assistant page to have
 Supervisor restart it after a fatal backend or nginx failure. The add-on
 manifest supplies the proxy-owned `/addon-health` monitoring URL, while the
-internal runner detects backend exit and post-start liveness failure. The
-per-install Watchdog setting controls whether Home Assistant performs automatic recovery.
-The separate start-on-boot setting does not provide runtime failure recovery.
+internal runner detects backend exit and reports post-start liveness degradation
+without killing a process merely because a probe exceeded an elapsed-time
+threshold. The per-install Watchdog setting controls whether Home Assistant
+performs automatic recovery. The separate start-on-boot setting does not
+provide runtime failure recovery.
 
 An operator stop or update allows up to 20 seconds for graceful backend,
 nginx, and helper shutdown, escalates remaining processes, and completes the

@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.2.30
+
+- Show clear, product-facing progress labels while Documentarian starts instead
+  of exposing internal phase names in the Home Assistant tab.
+- Open the workbench as soon as backend startup completes, and keep a live
+  backend running when deeper diagnostic health checks are slow or temporarily
+  unavailable.
+- Reuse a durable successful safety check for unchanged saved conversations,
+  while automatically running the full check again whenever relevant stored
+  conversation state changes.
+
 ## 0.2.29
 
 - Serve the ingress frontend and controlled startup-status endpoint before
