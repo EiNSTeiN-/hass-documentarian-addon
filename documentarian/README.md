@@ -61,6 +61,20 @@ API, or Socket.IO request reaches Documentarian. The add-on publishes no host
 port. Directly exposing the add-on or a local Documentarian Compose port beyond
 loopback is unsupported.
 
+The add-on starts its nginx ingress front door before configuration preflight
+and backend recovery. The Documentarian tab therefore shows the startup shell
+and a redacted active phase instead of an upstream 502 while durable recovery
+is running. Backend startup has no elapsed-time deadline; migration, publication
+recovery, index recovery, and saved-conversation audits may take as long as the
+stored data requires. The add-on fails startup only when a core process exits,
+an explicit startup error occurs, or Home Assistant requests a stop.
+
+`/addon-health` is nginx/container-front-door liveness for Home Assistant
+Watchdog. The add-on runner separately supervises backend exit and post-start
+liveness. `/startup-status` exposes only controlled phase messages and elapsed
+diagnostic values, and the open tab enters the workbench automatically once
+backend readiness succeeds.
+
 ## Credits
 
 Add-on icon derived from the

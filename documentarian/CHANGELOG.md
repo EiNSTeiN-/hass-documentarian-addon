@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.2.29
+
+- Serve the ingress frontend and controlled startup-status endpoint before
+  configuration preflight and backend recovery, so the Documentarian tab stays
+  inspectable throughout a slow boot.
+- Report bounded, redacted setup, publication, index-recovery, and storage-audit
+  phases in add-on logs and the startup screen, then enter the workbench
+  automatically when the backend becomes ready.
+- Allow durable startup recovery to converge without a total wall-clock
+  deadline while preserving process-exit detection, bounded individual probes,
+  post-start liveness supervision, and controlled shutdown deadlines.
+
 ## 0.2.28
 
 - Recover retained legacy source-corpus mutation records during cold upgrades
