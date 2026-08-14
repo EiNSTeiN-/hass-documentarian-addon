@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.31
+
+- Open a newly created conversation immediately after sending a message from a
+  documentation set instead of showing the Conversations empty state.
+- Read requested manual pages reliably when an agent selects one page, several
+  pages, or an inclusive page range.
+- Make saved-document search ready automatically when its search index needs
+  rebuilding, with a guided repair-and-retry action when preparation cannot
+  complete automatically.
+
 ## 0.2.30
 
 - Show clear, product-facing progress labels while Documentarian starts instead
