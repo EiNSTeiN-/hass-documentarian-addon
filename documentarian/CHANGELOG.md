@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.2.33
+
+- Strengthen release validation across conversations, search, browser flows,
+  saved-data restores, and both supported Home Assistant architectures while
+  keeping the add-on's product behavior unchanged from 0.2.32.
+
+## 0.2.32
+
+- Let searches, document processing, imports, saved-data recovery, and other
+  long-running work finish at their natural pace instead of failing only
+  because a fixed amount of time elapsed.
+- Keep startup, readiness, lazy loading, and transient reads recovering
+  automatically until they succeed, encounter a concrete failure, or are
+  canceled by the user.
+- Wait through temporary local database and resource contention while retaining
+  reliable recovery when an external connection or worker genuinely stops.
+
 ## 0.2.31
 
 - Open a newly created conversation immediately after sending a message from a

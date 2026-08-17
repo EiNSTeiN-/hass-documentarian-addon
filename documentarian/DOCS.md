@@ -90,11 +90,16 @@ health remains available from `/api/health` without controlling UI admission.
 Enable **Watchdog** on this installed add-on's Home Assistant page to have
 Supervisor restart it after a fatal backend or nginx failure. The add-on
 manifest supplies the proxy-owned `/addon-health` monitoring URL, while the
-internal runner detects backend exit and reports post-start liveness degradation
-without killing a process merely because a probe exceeded an elapsed-time
-threshold. The per-install Watchdog setting controls whether Home Assistant
-performs automatic recovery. The separate start-on-boot setting does not
-provide runtime failure recovery.
+internal runner detects backend exit and probes the backend's cheap `/health`
+endpoint after startup. Any successful probe resets the failure count; three
+consecutive completed failures terminate the add-on generation so Watchdog can
+replace it. Detailed readiness does not contribute to this count. Each probe
+gives curl a connection-phase limit and aborts a transfer only when it remains
+below one byte per second for the configured no-progress interval. These
+observational transport boundaries are separate from startup and detailed
+readiness. The per-install Watchdog setting controls whether Home Assistant
+performs automatic recovery.
+The separate start-on-boot setting does not provide runtime failure recovery.
 
 An operator stop or update allows up to 20 seconds for graceful backend,
 nginx, and helper shutdown, escalates remaining processes, and completes the

@@ -1,5 +1,5 @@
 name: Documentarian
-version: 0.2.31
+version: 0.2.33
 slug: documentarian
 description: Find, organize, search, and answer questions from appliance and machine manuals.
 url: https://github.com/EiNSTeiN-/hass-documentarian-addon
@@ -47,7 +47,6 @@ options:
   openai_live_url_inspection_enabled: true
   openai_live_url_inspection_model: gpt-5.4-mini
   openai_live_url_inspection_reasoning_effort: low
-  openai_live_url_inspection_timeout_seconds: 30
   home_assistant_mcp_url: ""
   home_assistant_mcp_auto_detect: true
   workbench_mcp_proxy_enabled: false
@@ -87,10 +86,8 @@ options:
   max_manifest_string_bytes: 8192
   max_manifest_container_items: 50000
   min_resource_temp_free_bytes: 1073741824
-  resource_controller_lock_timeout_seconds: 0.25
   resource_lease_heartbeat_seconds: 10.0
   resource_lease_expiry_seconds: 60.0
-  resource_shutdown_grace_seconds: 30.0
   log_level: info
 schema:
   openai_api_key: password
@@ -115,7 +112,6 @@ schema:
   openai_live_url_inspection_enabled: bool
   openai_live_url_inspection_model: str
   openai_live_url_inspection_reasoning_effort: list(low|medium|high)
-  openai_live_url_inspection_timeout_seconds: float
   home_assistant_mcp_url: password
   home_assistant_mcp_auto_detect: bool
   workbench_mcp_proxy_enabled: bool
@@ -157,9 +153,7 @@ schema:
   max_manifest_string_bytes: int(1,)
   max_manifest_container_items: int(1,)
   min_resource_temp_free_bytes: int(0,)
-  resource_controller_lock_timeout_seconds: float
   resource_lease_heartbeat_seconds: float
   resource_lease_expiry_seconds: float
-  resource_shutdown_grace_seconds: float
   log_level: list(debug|info|warning|error)
 image: "ghcr.io/einstein-docker/hass-documentarian-addon"
