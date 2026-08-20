@@ -59,6 +59,20 @@ Private upload, archive, and controller state lives under
 `/data/documentarian/resource_staging/` and participates in Home Assistant
 backup and restart recovery.
 
+## Conversation validation
+
+Documentarian trusts conversations after it accepts them and does not rescan
+all settled conversation content when the add-on starts. Portable conversation
+imports are normalized, structurally audited, and checked as one proposed
+hierarchy before their first conversation is published.
+
+To request a read-only full-store diagnostic, open the application menu beside
+**Import data** and **Home Assistant MCP**, select **Audit conversations**, and
+confirm **Perform full audit**. The modal shows structural and relationship
+progress in realtime. You may close it while the server continues; reopening
+shows the active or latest report. The audit reports findings and operational
+failures separately and never repairs, deletes, or rewrites a conversation.
+
 <!-- runtime-store-contract: documentarian-runtime-stores-v1 -->
 
 The generated

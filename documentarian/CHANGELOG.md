@@ -1,5 +1,40 @@
 # Changelog
 
+## 0.2.37
+
+- Deliver queued conversation follow-ups automatically when durable turn state
+  reaches idle, including after reconnects, missed transient completion events,
+  and brief backend cleanup races.
+- Preserve queued text and attachments when another turn owns the conversation
+  or a send fails, while preventing duplicate sends from repeated snapshots.
+
+## 0.2.36
+
+- Prepare missing or stale semantic vectors inside candidate, saved-resource,
+  package-template, and knowledge searches instead of returning a
+  `vectors_not_ready` failure.
+- Prepare candidate-overlap metadata and accepted-source search indexes inside
+  the originating tool call, with shared ownership for concurrent calls.
+- Prepare package-catalog metadata for package inventory and search without
+  asking the agent or user to run a separate repair step.
+
+## 0.2.35
+
+- Keep the conversation token footer cumulative while realtime tool activity
+  resynchronizes or a failed turn is being durably finalized.
+- Keep conversations resumable when a turn is stopped during tool use by
+  preserving completed results and recording an interruption result for every
+  unfinished tool call.
+
+## 0.2.34
+
+- Trust conversations after Documentarian accepts them so add-on startup does
+  not rescan the complete local conversation store.
+- Audit every portable conversation batch before its first conversation is
+  published, including the proposed combined conversation hierarchy.
+- Add an **Audit conversations** menu action with read-only structural and
+  relationship progress, detailed findings, and resumable realtime status.
+
 ## 0.2.33
 
 - Strengthen release validation across conversations, search, browser flows,
