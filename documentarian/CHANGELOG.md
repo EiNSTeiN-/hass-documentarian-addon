@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.38
+
+- Add GPT-5.6 Terra, Sol, and Luna to the in-app model picker, with Terra on
+  high reasoning as the default for message composers.
+- Generate representative conversation titles with GPT-5.6 Luna on low
+  reasoning.
+
 ## 0.2.37
 
 - Deliver queued conversation follow-ups automatically when durable turn state
