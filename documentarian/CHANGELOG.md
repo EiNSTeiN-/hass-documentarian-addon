@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.2.39
+
+- Keep independent model tool calls genuinely parallel while calls constrained
+  by worker, controller, memory, disk, corpus, or materialization capacity wait
+  at that exact resource instead of failing with `concurrency_exhausted`.
+- Open conversation surfaces immediately from the user's text, photo, file, or
+  existing-conversation intent, then reconcile delivery, queueing, retry, and
+  errors inline without acknowledgement-gated UI lag.
+- Preserve every emitted tool call's matching output through cancellation and
+  bounded workflows, and allow productive tool rounds to finish without an
+  arbitrary round ceiling.
+
 ## 0.2.38
 
 - Add GPT-5.6 Terra, Sol, and Luna to the in-app model picker, with Terra on
