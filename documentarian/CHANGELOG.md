@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.41
+
+- Restore startup with candidate-promotion history saved before 0.2.40, while
+  preserving accepted manuals, saved operation identities and publication history.
+- Resume interrupted candidate acceptance across the upgrade and retain the
+  same source on subsequent restarts.
+- Include the record identity in candidate-promotion validation failures to
+  make startup diagnostics actionable without exposing document contents.
+
 ## 0.2.40
 
 - Offer GPT-6.1 Sol, GPT-6 Astra, GPT-6.1 Terra, GPT-6 Sol and GPT-6 Luna in
