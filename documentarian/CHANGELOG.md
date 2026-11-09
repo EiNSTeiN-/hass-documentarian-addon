@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.2.40
+
+- Offer GPT-6.1 Sol, GPT-6 Astra, GPT-6.1 Terra, GPT-6 Sol and GPT-6 Luna in
+  every conversation model picker, with GPT-6.1 Sol as the default.
+- Upgrade saved GPT-5/o model preferences and offer reasoning settings supported
+  by the selected model, while preserving saved conversations and separately
+  configured background workloads.
+- Read complete source details through the shared HTTP path and keep open
+  viewers and drawers aligned through metadata changes, imports and reconnects.
+- Improve resource ownership across source ingestion, promotion, refresh and
+  metadata reads while preserving parallel work and waiting for available capacity.
+- Show explicit retry guidance when a document-renderer child fails, with
+  terminal cleanup that permits the next page request to succeed.
+
 ## 0.2.39
 
 - Keep independent model tool calls genuinely parallel while calls constrained

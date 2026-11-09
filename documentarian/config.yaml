@@ -1,5 +1,5 @@
 name: Documentarian
-version: 0.2.39
+version: 0.2.40
 slug: documentarian
 description: Find, organize, search, and answer questions from appliance and machine manuals.
 url: https://github.com/EiNSTeiN-/hass-documentarian-addon
@@ -27,8 +27,8 @@ watchdog: http://[HOST]:[PORT:8099]/addon-health
 backup: cold
 options:
   openai_api_key: ""
-  openai_model: gpt-5.6-terra
-  openai_model_options: gpt-5.6-terra,gpt-5.6-sol,gpt-5.6-luna,gpt-5.5,gpt-5.4,gpt-5.4-mini,o4-mini,o3
+  openai_model: gpt-6.1-sol
+  openai_model_options: gpt-6.1-sol,gpt-6-astra,gpt-6.1-terra,gpt-6-sol,gpt-6-luna
   openai_reasoning_effort: high
   openai_chat_reasoning_efforts: none,minimal,low,medium,high,xhigh
   openai_methodology_reasoning_efforts: minimal,low,medium,high,xhigh
