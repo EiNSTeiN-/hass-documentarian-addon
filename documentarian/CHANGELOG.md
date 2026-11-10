@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.42
+
+- Keep startup and background semantic indexing responsive while saved manuals,
+  discovery candidates, knowledge and package templates are reconciled.
+- Show accurate conversation-delivery progress, recover safely from a lost
+  connection acknowledgement, and keep documentation references clickable
+  before the message becomes durable.
+- Preserve one realtime publication identity for each accepted conversation,
+  source or package through interrupted cleanup and upgrade reconciliation.
+
 ## 0.2.41
 
 - Restore startup with candidate-promotion history saved before 0.2.40, while
