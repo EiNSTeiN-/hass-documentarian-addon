@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.43
+
+- Keep large package saves connected through durable completion while deferring
+  expensive follow-up work outside the MCP request.
+- Wait for actual memory capacity during candidate ingestion without counting
+  retired parsing work or retained metadata twice.
+- Show conversation reasoning and incoming content in place without false
+  scroll notices, broken temporary messages, or plain-text documentation-set
+  references.
+
 ## 0.2.42
 
 - Keep startup and background semantic indexing responsive while saved manuals,
