@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.44
+
+- Continue OpenAI Responses from durable provider anchors so later turns and
+  tool rounds upload only new input while retaining complete local recovery.
+- Reduce response startup and request overhead with local token estimation and
+  progressive tool disclosure without removing tools available to the agent.
+- Attach multiple photos or files in one selection from the mobile top-bar
+  composer.
+
 ## 0.2.43
 
 - Keep large package saves connected through durable completion while deferring
