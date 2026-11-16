@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.46
+
+- Continue long tool-using conversations after compaction without replaying
+  orphaned tool-search calls or losing selected tool namespaces.
+- Resume conversations affected by the tool-search compaction error without
+  re-entering the message or repeating completed tool effects, including when
+  another retry already failed.
+
 ## 0.2.45
 
 - Prepare adjacent PDF pages for faster navigation in conversation and Library
