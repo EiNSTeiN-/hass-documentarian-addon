@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.2.45
+
+- Prepare adjacent PDF pages for faster navigation in conversation and Library
+  viewers, without waiting for separate page geometry or ordinary annotations.
+- Keep displayed PDF pixels and overlays tied to the same source revision, and
+  provide local display-timing diagnostics without blocking viewing.
+- Generate conversation titles from the complete first saved user message while
+  the agent works, preserving manual renames and conversation ordering.
+- Preserve reasoning summaries through live updates, snapshot recovery,
+  reconnects and interrupted responses.
+- Maximize conversations and other information-dense work dialogs without
+  resetting their contents, drafts or progress.
+- Improve large-conversation tool-result persistence, settled exports, restart
+  recovery, startup progress and retained top-bar conversation targets.
+
 ## 0.2.44
 
 - Continue OpenAI Responses from durable provider anchors so later turns and
